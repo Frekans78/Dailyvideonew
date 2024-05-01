@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Zar Atma - Daily Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            background-image: url("zar2.png");
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .dice-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .dice {
+            font-size: 48px;
+            padding: 10px 20px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .btn-roll {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-roll:hover {
+            background-color: #0056b3;
+        }
+
+        .select-container {
+            margin-bottom: 20px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="dice-container">
+    <h1>Zar At</h1>
+    <div class="select-container">
+        <label for="dice-type">Zar Türü:</label>
+        <select id="dice-type">
+            <option value="6">6 Yüzlü Zar</option>
+            <option value="20">20 Yüzlü Zar</option>
+            <option value="100">100 Yüzlü Zar</option>
+        </select>
+    </div>
+    <div class="dice" id="dice1">?</div>
+    <div class="dice" id="dice2">?</div>
+    <button class="btn-roll" onclick="rollDice()">Zar At</button>
+</div>
+
+<script>
+    function rollDice() {
+        var diceType = parseInt(document.getElementById('dice-type').value);
+        var randomNumber1 = Math.floor(Math.random() * diceType) + 1;
+        var randomNumber2 = Math.floor(Math.random() * diceType) + 1; 
+        
+        var diceElement1 = document.getElementById('dice1');
+        var diceElement2 = document.getElementById('dice2');
+        
+        diceElement1.innerText = randomNumber1; 
+        diceElement2.innerText = randomNumber2; 
+    }
+</script>
+
+<footer>
+        
+    <p style="color: white;"> Site Sahibi : Ayhan Taştekin - <a href="mailto:ayhantastekin@hotmail.com">e-Posta</a></p>
+    <p style="color: white;"><a style="font-size: small;">Bu site bir üniversite projesi olarak hazırlanmıştır.</a> </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Oylama - Daily Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            background-image: url("secim.jpg");
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .poll-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .poll-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .poll-question {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 0 20px;
+            color: #555;
+        }
+
+        .poll-options {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+
+        .poll-option {
+            margin-bottom: 10px;
+        }
+
+        .poll-submit {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .poll-submit:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        .bar-container {
+            margin-top: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .bar {
+            height: 20px;
+            background-color: #007bff;
+            text-align: left;
+            padding: 5px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="poll-container">
+    <h2>Günün En İyi Video İçeriği Hangisi?</h2>
+    <div class="poll-question">
+        <p>Lütfen aşağıdaki seçeneklerden birini seçin:</p>
+    </div>
+    <form id="poll-form">
+        <div class="poll-options">
+            <div class="poll-option">
+                <input type="radio" id="option1" name="poll-option" value="option1">
+                <label for="option1">Komik Hayvanlar</label>
+            </div>
+            <div class="poll-option">
+                <input type="radio" id="option2" name="poll-option" value="option2">
+                <label for="option2">Bilim ve Teknoloji</label>
+            </div>
+            <div class="poll-option">
+                <input type="radio" id="option3" name="poll-option" value="option3">
+                <label for="option3">Müzik ve Sanat</label>
+            </div>
+        </div>
+        <button type="submit" class="poll-submit">Oyla</button>
+    </form>
+    <div id="results" class="result" style="display:none;">
+        <h3>Oylama Sonuçları:</h3>
+        <div id="option1-bar-container" class="bar-container">
+            <div id="option1-bar" class="bar"></div>
+        </div>
+        <p id="option1-percentage"></p>
+        <div id="option2-bar-container" class="bar-container">
+            <div id="option2-bar" class="bar"></div>
+        </div>
+        <p id="option2-percentage"></p>
+        <div id="option3-bar-container" class="bar-container">
+            <div id="option3-bar" class="bar"></div>
+        </div>
+        <p id="option3-percentage"></p>
+    </div>
+</div>
+
+<footer>
+        
+    <p style="color: white;"> Site Sahibi : Ayhan Taştekin - <a href="mailto:ayhantastekin@hotmail.com">e-Posta</a></p>
+    <p style="color: white;"><a style="font-size: small;">Bu site bir üniversite projesi olarak hazırlanmıştır.</a> </p>
+</footer>
+
+
+<script>
+    document.getElementById('poll-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        var option1Votes = 0;
+        var option2Votes = 0;
+        var option3Votes = 0;
+        
+        var selectedOption = document.querySelector('input[name="poll-option"]:checked');
+        
+        if (selectedOption) {
+            var selectedValue = selectedOption.value;
+            
+            if (selectedValue === 'option1') {
+                option1Votes++;
+            } else if (selectedValue === 'option2') {
+                option2Votes++;
+            } else if (selectedValue === 'option3') {
+                option3Votes++;
+            }
+            
+            var totalVotes = option1Votes + option2Votes + option3Votes;
+            
+            var option1Percentage = (option1Votes / totalVotes * 100).toFixed(2);
+            var option2Percentage = (option2Votes / totalVotes * 100).toFixed(2);
+            var option3Percentage = (option3Votes / totalVotes * 100).toFixed(2);
+            
+            document.getElementById('option1-percentage').innerText = "Komik Hayvanlar: %" + option1Percentage;
+            document.getElementById('option2-percentage').innerText = "Bilim ve Teknoloji: %" + option2Percentage;
+            document.getElementById('option3-percentage').innerText = "Müzik ve Sanat: %" + option3Percentage;
+            
+            document.getElementById('results').style.display = 'block';
+            
+            document.getElementById('option1-bar').style.width = option1Percentage + '%';
+            document.getElementById('option2-bar').style.width = option2Percentage + '%';
+            document.getElementById('option3-bar').style.width = option3Percentage + '%';
+        }
+    });
+</script>
+
+
+
+</body>
+</html>
