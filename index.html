@@ -5,52 +5,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DAILY VIDEO</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> <!-- Kırmızı: Bootstrap CSS eklendi -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <section> 
+    <div class="d-flex">
+        <nav class="nav flex-column bg-light p-3"> <!-- Kırmızı: Dikey navigasyon çubuğu için sınıflar eklendi -->
+            <a class="nav-link" href="bizkimiz.html" style="color:rgb(3, 156, 228);">BİZ KİMİZ?</a>
+            <a class="nav-link" href="sizkimsiniz.html" style="color:rgb(3, 156, 228);">SİZ KİMSİNİZ?</a>
+            <a class="nav-link" href="oylama.html" style="color:rgb(3, 156, 228);">OYLAMA</a>
+            <a class="nav-link" href="zar.html" style="color:rgb(3, 156, 228);">ŞANSINI DENE!</a>
+        </nav>
 
-        <a href="bizkimiz.html" style="color:rgb(3, 156, 228);">BİZ KİMİZ?</a> | 
-        <a href="sizkimsiniz.html" style="color:rgb(3, 156, 228);">SİZ KİMSİNİZ?</a> |
-        <a href="oylama.html" style="color:rgb(3, 156, 228);">OYLAMA</a> |
-        <a href="zar.html" style="color:rgb(3, 156, 228);">ŞANSINI DENE!</a> |
-        <hr>
-
-    <section>
-    
-    <div class="container">
-        <div class="info">Günlük video önerileri için lütfen aşağıdaki oynat tuşuna basın.</div>
-        <h1>DAILY VIDEO</h1>
-        <div id="video-container">
-            <div id="player">
-                <a href="videolar.html">
-                    <img src="flat3-video-player-png.png" style="width: 860px; height: 615px;">
-                </a>
+        <div class="container">
+            <div class="info">Günlük video önerileri için lütfen aşağıdaki oynat tuşuna basın.</div>
+            <h1>DAILY VIDEO</h1>
+            <div id="video-container">
+                <div id="player">
+                    <a href="videolar.html">
+                        <img src="flat3-video-player-png.png" class="img-fluid" alt="Video Player"> 
+                    </a>
+                </div>
             </div>
-    </div>
-    <hr style="width:1900px;">
+            <hr>
 
-    <div id="contact-form" class="closed">
-        <h2>Geri Bildirim Formu</h2>
-        <form id="feedback-form" action="#" method="post">
-            <label for="name">Adınız:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">E-posta Adresiniz:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Mesajınız:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Gönder</button>
-        </form>
+            <div id="contact-form" class="closed">
+                <h2>Geri Bildirim Formu</h2>
+                <form id="feedback-form" action="#" method="post" class="needs-validation" novalidate> <!-- Kırmızı: Bootstrap form sınıfı eklendi -->
+                    <div class="form-group">
+                        <label for="name">Adınız:</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                        <div class="invalid-feedback">Lütfen adınızı girin.</div> <!-- Kırmızı: Bootstrap hata mesajı eklendi -->
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-posta Adresiniz:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                        <div class="invalid-feedback">Lütfen geçerli bir e-posta adresi girin.</div> <!-- Kırmızı: Bootstrap hata mesajı eklendi -->
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mesajınız:</label>
+                        <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                        <div class="invalid-feedback">Lütfen mesajınızı girin.</div> <!-- Kırmızı: Bootstrap hata mesajı eklendi -->
+                    </div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal">Gönder</button> <!-- Kırmızı: Modal gösterimi için type="button" olarak değiştirildi -->
+                </form>
+            </div>
+        </div>
     </div>
 
-    <footer>
-        
-        <p style="color: white;"> Site Sahibi : Ayhan Taştekin - <a href="mailto:ayhantastekin@hotmail.com">e-Posta</a></p>
-        <p style="color: white;"><a style="font-size: small;">Bu site bir üniversite projesi olarak hazırlanmıştır.</a> </p>
+    <footer class="bg-dark text-white text-center py-3"> <!-- Kırmızı: Bootstrap sınıfları eklendi -->
+        <p>Site Sahibi: Ayhan Taştekin - <a href="mailto:ayhantastekin@hotmail.com" class="text-blue">e-Posta</a></p>
+        <p><small>Bu site bir üniversite projesi olarak hazırlanmıştır.</small></p>
     </footer>
 
+   <!-- Kırmızı: Bootstrap modal bileşeni eklendi -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Onay</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Formu göndermek istediğinizden emin misiniz?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-primary" id="confirmSubmit">Gönder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> <!-- Kırmızı: jQuery eklendi -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script> <!-- Kırmızı: Popper.js eklendi -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- Kırmızı: Bootstrap JS eklendi -->
     <script src="script.js"></script>
 </body>
 
