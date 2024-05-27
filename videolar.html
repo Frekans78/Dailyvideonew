@@ -4,37 +4,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap CSS eklendi -->
     <link rel="stylesheet" href="styles.css">
     <div class="info">Öneriler Günlük Olarak Değişecektir</div>
 </head>
 
 <body>
 
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=PDpsmhRBev8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<nav>
+    <a href="index.html" class="nav-link">ANA SAYFA</a>
+    <a href="bizkimiz.html" class="nav-link">BİZ KİMİZ?</a>
+    <a href="sizkimsiniz.html" class="nav-link">SİZ KİMSİNİZ?</a>
+    <a href="oylama.html" class="nav-link">OYLAMA</a>
+    <a href="zar.html" class="nav-link">ŞANSINI DENE!</a>
+</nav>
 
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=WGjfV8HkZ6U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=DQghiGQi6Lo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-    <div id="contact-form" class="closed">
-        <h2>Geri Bildirim</h2>
-        <form id="feedback-form" action="#" method="post">
-            <label for="name">Adınız:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">E-posta Adresiniz:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Mesajınız:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Gönder</button>
-        </form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <iframe width="140%" height="500" src="https://www.youtube.com/watch?v=PDpsmhRBev8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="col-md-4">
+            <iframe width="140%" height="500" src="https://www.youtube.com/watch?v=WGjfV8HkZ6U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="col-md-4">
+            <iframe width="140%" height="500" src="https://www.youtube.com/watch?v=DQghiGQi6Lo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </div>
+</div>
 
-    <footer>
-        <p style="color: white;"> Site Sahibi : Ayhan Taştekin - <a href="mailto:ayhantastekin@hotmail.com">e-Posta</a></p>
-        <p style="color: white;"><a style="font-size: small;">Bu site bir üniversite projesi olarak hazırlanmıştır.</a> </p>
-    </footer>
+<div id="contact-form" class="closed">
+    <h2>Geri Bildirim Formu</h2>
+    <form id="feedback-form" action="#" method="post" class="needs-validation" novalidate> <!-- Bootstrap form sınıfı eklendi -->
+        <div class="form-group">
+            <label for="name">Adınız:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+            <div class="invalid-feedback">Lütfen adınızı girin.</div> <!-- Bootstrap hata mesajı eklendi -->
+        </div>
+        <div class="form-group">
+            <label for="email">E-posta Adresiniz:</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+            <div class="invalid-feedback">Lütfen geçerli bir e-posta adresi girin.</div> <!-- Bootstrap hata mesajı eklendi -->
+        </div>
+        <div class="form-group">
+            <label for="message">Mesajınız:</label>
+            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+            <div class="invalid-feedback">Lütfen mesajınızı girin.</div> <!-- Bootstrap hata mesajı eklendi -->
+        </div>
+        <button type="submit" class="btn btn-primary">Gönder</button> <!-- Formu göndermek için type="submit" -->
+    </form>
+</div>
 
-    <script src="script.js"></script>
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Gönderim Başarılı</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Formu göndermek istediğinizden emin misiniz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-primary" id="confirmSubmit">Gönder</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p style="color: white;"> Site Sahibi : Ayhan Taştekin - <a href="mailto:ayhantastekin@hotmail.com">e-Posta</a></p>
+    <p style="color: white;"><a style="font-size: small;">Bu site bir üniversite projesi olarak hazırlanmıştır.</a> </p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> <!-- jQuery eklendi -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script> <!-- Popper.js eklendi -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- Bootstrap JS eklendi -->
+<script src="script.js"></script>
+
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+            Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    } else {
+                        event.preventDefault();
+                        $('#confirmationModal').modal('show');
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+
+            document.getElementById('confirmSubmit').addEventListener('click', function () {
+                var form = document.getElementById('feedback-form');
+                if (form.checkValidity()) {
+                    form.submit(); // Formu gönder
+                }
+            });
+        }, false);
+    })();
+</script>
+
 </body>
 
 </html>
